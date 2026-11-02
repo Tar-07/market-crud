@@ -9,18 +9,37 @@
 
 ---
 
-## 📋 ขั้นตอนการติดตั้งและรันหลังโคลนโปรเจกต์ (After Git Clone)
+## 💻 สิ่งที่ต้องมีในเครื่องก่อนติดตั้ง (Prerequisites)
 
-เมื่อคุณทำการโคลนโปรเจกต์มาจาก Git ให้ทำตามขั้นตอนทีละสเต็ปด้านล่างนี้ได้เลยครับ:
+ก่อนเริ่มโคลนโปรเจกต์ ตรวจสอบว่าเครื่องของคุณติดตั้งสิ่งเหล่านี้เรียบร้อยแล้ว:
+1. **Node.js** (เวอร์ชัน 18 ขึ้นไป แนะนำ v20 หรือ v22) &rarr; ดาวน์โหลดได้ที่ [nodejs.org](https://nodejs.org/)
+2. **Git** &rarr; ดาวน์โหลดได้ที่ [git-scm.com](https://git-scm.com/)
 
-### สเต็ปที่ 1: เข้าสู่โฟลเดอร์โปรเจกต์
+> ตรวจสอบความพร้อมโดยเปิด Terminal/PowerShell แล้วพิมพ์:
+> ```bash
+> node -v
+> npm -v
+> git --version
+> ```
+
+---
+
+## 📥 ขั้นตอนการโคลนและรันบนเครื่องใหม่ (Clone & Setup Guide)
+
+### สเต็ปที่ 1: โคลนโปรเจกต์ลงเครื่องใหม่
+เปิด Terminal/PowerShell ในโฟลเดอร์ที่คุณต้องการเก็บโปรเจกต์ (เช่น โฟลเดอร์ `Desktop` หรือไดรฟ์ `D:\CODE`) แล้วรันคำสั่ง:
+
 ```bash
-cd market
+# 1. โคลน Repository ลงมาที่เครื่อง
+git clone https://github.com/Tar-07/market-crud.git
+
+# 2. เข้าสู่โฟลเดอร์โปรเจกต์
+cd market-crud
 ```
 
 ---
 
-### สเต็ปที่ 2: ติดตั้งและเปิดเซิร์ฟเวอร์ Backend (Terminal 1)
+### สเต็ปที่ 2: ติดตั้งและเปิดเซิร์ฟเวอร์ Backend (Terminal ที่ 1)
 
 เปิด **Terminal ที่ 1** แล้วรันคำสั่งตามลำดับดังนี้:
 
@@ -28,13 +47,13 @@ cd market
 # 1. เข้าสู่โฟลเดอร์ backend
 cd backend
 
-# 2. คัดลอกไฟล์ตั้งค่า .env (กรณีที่ไม่มีไฟล์ .env หลังโคลน)
+# 2. คัดลอกไฟล์ตั้งค่า .env (สร้างไฟล์ .env จากตัวอย่าง)
 # สำหรับ Windows (PowerShell):
 copy .env.example .env
-# หรือถ้าใช้ Command Prompt / Git Bash / Mac / Linux:
+# หรือถ้าใช้ Command Prompt / Git Bash / macOS / Linux:
 cp .env.example .env
 
-# 3. ติดตั้ง Dependencies และแพ็กเกจต่างๆ
+# 3. ติดตั้ง Dependencies และไลบรารีต่างๆ
 npm install
 
 # 4. สร้างฐานข้อมูล SQLite (dev.db) ให้ตรงกับโครงสร้าง Prisma
@@ -52,19 +71,19 @@ npm run dev
 
 ---
 
-### สเต็ปที่ 3: ติดตั้งและเปิดเว็บแอปพลิเคชัน Frontend (Terminal 2)
+### สเต็ปที่ 3: ติดตั้งและเปิดเว็บแอปพลิเคชัน Frontend (Terminal ที่ 2)
 
-เปิด **Terminal ที่ 2** (หน้าต่างใหม่) แล้วรันคำสั่งตามลำดับดังนี้:
+เปิด **Terminal ที่ 2** (หน้าต่างใหม่) แล้วไปที่โฟลเดอร์โปรเจกต์ จากนั้นรันคำสั่งตามลำดับดังนี้:
 
 ```bash
 # 1. เข้าสู่โฟลเดอร์ frontend
-cd market/frontend
-# (หรือถ้าเปิดจากไดเรกทอรีหลัก ให้พิมพ์: cd frontend)
+cd market-crud/frontend
+# (หรือถ้าเปิด Terminal อยู่ในโฟลเดอร์ market-crud อยู่แล้ว ให้พิมพ์: cd frontend)
 
 # 2. คัดลอกไฟล์ตั้งค่า .env.local
 # สำหรับ Windows (PowerShell):
 copy .env.example .env.local
-# หรือถ้าใช้ Command Prompt / Git Bash / Mac / Linux:
+# หรือถ้าใช้ Command Prompt / Git Bash / macOS / Linux:
 cp .env.example .env.local
 
 # 3. ติดตั้ง Dependencies ฝั่งหน้าเว็บ
@@ -116,7 +135,7 @@ npm run dev
 ## 📁 โครงสร้างโปรเจกต์ (Project Structure)
 
 ```
-market/
+market-crud/
 ├── backend/
 │   ├── index.js               # Express Server & RESTful API endpoints
 │   ├── prisma/
